@@ -104,7 +104,7 @@ class InvoiceListViewController: UIViewController, UITableViewDelegate, UITableV
         var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "invoiceCell", for: indexPath as IndexPath)
         
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "invoiceCell")
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "invoiceCell")
         }
         
         cell.textLabel?.text = "\(invoices[indexPath.row]["invoiceNumber"] as! String) - \(invoices[indexPath.row]["invoiceDate"] as! String) - \(invoices[indexPath.row]["totalAmount"] as! String)"
@@ -124,8 +124,8 @@ class InvoiceListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             invoices.remove(at: indexPath.row)
             tblInvoices.reloadData()
             UserDefaults.standard.set(self.invoices, forKey: "invoices")

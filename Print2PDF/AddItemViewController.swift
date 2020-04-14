@@ -28,7 +28,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
         txtPrice.delegate = self
         
         // Add a tap gesture recognizer to the view to dismiss the keyboard.
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddItemViewController.dismissKeyboard))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
     }
 
@@ -51,7 +51,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Custom Methods
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         if currentTextfield != nil {
             currentTextfield.resignFirstResponder()
             currentTextfield = nil
@@ -68,8 +68,8 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
     // MARK: IBAction Methods
     
     @IBAction func saveItem(_ sender: AnyObject) {
-        if (txtItemDescription.text?.characters.count)! > 0 &&
-            (txtPrice.text?.characters.count)! > 0 {
+        if (txtItemDescription.text?.count)! > 0 &&
+            (txtPrice.text?.count)! > 0 {
             
             if saveCompletionHandler != nil {
                 // Call the save completion handler to pass the item description and the price back to the CreatorViewController object.
